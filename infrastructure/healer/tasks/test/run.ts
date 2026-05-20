@@ -39,8 +39,8 @@ const main = async () => {
   const apiFilesChanged = changedFiles.some((f) => f.includes("src/") || f.includes("lib/"));
 
   const typeCheck = apiFilesChanged
-    ? runCheck("pnpm", ["type:check", repoPath)
-    : { passed: true, output: "Skipped — no API files changed" };
+    ? runCheck("pnpm", ["type:check"], repoPath)
+    : { passed: true, output: "Skipped — no source files changed" };
 
   const fileBasenames = [...new Set(changedFiles.map((f) => path.basename(f, path.extname(f))))];
   const testPattern = fileBasenames.map((n) => `${n}\\.test`).join("|");
@@ -49,7 +49,7 @@ const main = async () => {
         "pnpm",
         [
           "--filter",
-          "your-api-workspace",  // replace with your pnpm workspace filter
+          "YOUR_WORKSPACE", // TODO: replace with your pnpm workspace package name (e.g. "@myorg/api")
           "test:unit",
           "--",
           `--testPathPattern=${testPattern}`,

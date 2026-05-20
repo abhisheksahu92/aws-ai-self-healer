@@ -5,15 +5,15 @@ import { storeAuditLog, writePipelineState, readPipelineState } from "../shared/
 import { buildFixPrompt, FIX_SYSTEM_PROMPT } from "./prompts";
 import { PipelineState, FixResult, EnrichedHealerEvent } from "../../lambdas/shared/types";
 
+// TODO: Add your project's source directories here.
+// The AI will only apply diffs to files under these prefixes.
 const SAFE_PATH_PREFIXES = [
   "src/",
-  
-  
-  
-  
-  
-  
+  "lib/",
+  "app/",
   "packages/",
+  "server/",
+  "api/",
 ];
 
 const FORBIDDEN_PATH_PATTERNS = [

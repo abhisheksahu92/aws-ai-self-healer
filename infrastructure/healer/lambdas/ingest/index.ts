@@ -65,11 +65,12 @@ const extractService = (projectSlug: string, culprit: string): string => {
 
 const serviceToLogGroup = (service: string): string => {
   const env = process.env.ENVIRONMENT ?? "dev";
-  const map: Record<string, string> = {
-    // Map your service names to their CloudWatch log groups:
-    
-    
-  };
+  // TODO: Add your service → CloudWatch log group mappings here.
+  // By default returns /ecs/{env}-{service} which works for most ECS setups.
+  // Example: const map: Record<string, string> = {
+  //   "my-api": `/ecs/${env}-my-api`,
+  //   "my-worker": `/aws/lambda/${env}-my-worker`,
+  // };
   return `/ecs/${env}-${service}`;
 };
 
