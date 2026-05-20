@@ -50,13 +50,14 @@ const detectIssueType = (title: string, culprit: string): HealerIssueType => {
   const text = `${title} ${culprit}`.toLowerCase();
   if (text.includes("timeout") || text.includes("latency") || text.includes("slow"))
     return "performance";
-  if (text.includes("stripe") || text.includes("webhook") || text.includes("pharmacy"))
+  if (text.includes("error") || text.includes("exception") || text.includes("crash"))
     return "integration";
   return "crash";
 };
 
 const extractService = (projectSlug: string, culprit: string): string => {
-  if (projectSlug.includes("api")) return "patient-api";
+  // Map your project slug to your service name:
+  // if (projectSlug.includes("api")) return "your-api-service";
   // Customize: map culprit strings to your service names
   // e.g.: if (culprit.includes("admin")) return "admin-service";
   return projectSlug;

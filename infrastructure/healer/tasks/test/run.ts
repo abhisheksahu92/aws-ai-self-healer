@@ -36,7 +36,7 @@ const main = async () => {
   safeSpawn("pnpm", ["install", "--frozen-lockfile"], { cwd: repoPath, timeout: 300_000 });
 
   const changedFiles = state.fix?.affectedFiles ?? [];
-  const apiFilesChanged = changedFiles.some((f) => f.includes("patient-api"));
+  const apiFilesChanged = changedFiles.some((f) => f.includes("src/") || f.includes("lib/"));
 
   const typeCheck = apiFilesChanged
     ? runCheck("pnpm", ["type:check", repoPath)
@@ -49,7 +49,7 @@ const main = async () => {
         "pnpm",
         [
           "--filter",
-          "@fuse/api",
+          "your-api-workspace",  // replace with your pnpm workspace filter
           "test:unit",
           "--",
           `--testPathPattern=${testPattern}`,

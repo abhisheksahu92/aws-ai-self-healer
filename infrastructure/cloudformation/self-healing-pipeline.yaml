@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: >
-  KAN-431 - AI Self-Healing Backend Pipeline.
+  AI Self-Healing Backend Pipeline.
   Sentry + Bedrock monitoring trigger SNS -> EventBridge Pipe ->
   Step Functions (INGEST -> INVESTIGATE -> FIX -> TEST -> PR -> NOTIFY).
 
